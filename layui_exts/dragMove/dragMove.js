@@ -57,6 +57,7 @@ layui.define('layer', function(exports){
     +   "<button type='button' class='layui-btn layui-btn-sm' data-method='real'>实际大小</button>"
     +   "<button type='button' class='layui-btn layui-btn-sm' data-method='zoomin'>放大</button>"
     +   "<button type='button' class='layui-btn layui-btn-sm' data-method='zoomout'>缩小</button>"
+	+   "<button type='button' class='layui-btn layui-btn-sm layui-layer-close layui-layer-close1' data-method='zoomclose'>关闭</button>"
     + "</div>"
     + "</div>";
 
@@ -166,7 +167,12 @@ layui.define('layer', function(exports){
           scaleSize = zoomData.zoomSize / 1.2;
           scaleSize = scaleSize < zoomData.defaultZoom ? zoomData.defaultZoom : scaleSize;
           break;
-      
+		case "zoomclose":
+		      // 假设使用 layui 的 layer 弹窗，关闭当前弹窗（需替换为你的弹窗实例）
+		      // 如果是 iframe 弹窗，可通过 parent.layer.close(index) 关闭
+		      // 若为自定义弹窗，可使用 hide() 或 remove() 方法
+			parent.layer.closeAll('iframe'); // 或具体的弹窗索引，如 parent.layer.close(that.index)
+		    break;
         default:
           break;
       }
